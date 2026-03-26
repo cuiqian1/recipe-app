@@ -1,6 +1,6 @@
 import { getUser } from '@/utils/storage'
 
-const SERVER_HOST = 'http://172.22.48.74:3000'
+const SERVER_HOST = 'https://recipe-app-ws7n.onrender.com'
 const BASE_URL = SERVER_HOST + '/api'
 
 // 导出给其他文件用的图片URL前缀
