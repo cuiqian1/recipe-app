@@ -1,5 +1,16 @@
 @import './variables.scss';
 
+/* 全局隐藏滚动条 */
+::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+* {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 page {
   background-color: $bg-page;
   color: $text-primary;

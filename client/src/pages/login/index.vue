@@ -60,11 +60,13 @@ export default {
 <style lang="scss" scoped>
 .login-page {
   height: 100vh;
+  height: 100dvh;
   background: #FFFFFF;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  box-sizing: border-box;
 }
 
 .login-content {

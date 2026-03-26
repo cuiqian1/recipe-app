@@ -5,4 +5,7 @@ export default defineConfig({
   plugins: [
     uni(),
   ],
+  define: {
+    'process.env': {}
+  }
 })
