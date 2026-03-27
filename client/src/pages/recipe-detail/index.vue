@@ -133,6 +133,9 @@
     <!-- 底部操作 -->
     <view class="bottom-bar">
       <view class="bottom-btns">
+        <view class="share-btn" v-if="isCreator" @click="handleToggleShare">
+          <text class="share-btn-text">{{ recipe.isShared ? '🔒 取消分享' : '🔗 分享给好友' }}</text>
+        </view>
         <view class="copy-btn" v-if="!isCreator && recipe.isShared" @click="handleCopy">
           <text class="copy-btn-text">📥 添加到我的菜谱</text>
         </view>
@@ -171,7 +174,7 @@
 </template>
 
 <script>
-import { getRecipeDetail, copyRecipe, deleteRecipe } from '@/api/recipe'
+import { getRecipeDetail, copyRecipe, deleteRecipe, updateRecipe } from '@/api/recipe'
 import { addOrderItem } from '@/api/order'
 import { useUserStore } from '@/store/user'
 import { difficultyText, cookTimeText, getToday } from '@/utils/format'
@@ -261,6 +264,17 @@ export default {
         await addOrderItem({ recipeId: this.id, mealType, date: getToday() })
         this.$refs.toast.show({ message: '已加入菜单', type: 'success' })
       } catch (e) {}
+    },
+    async handleToggleShare() {
+      const newVal = !this.recipe.isShared
+      try {
+        this.$refs.toast.loading(newVal ? '分享中...' : '取消分享中...')
+        await updateRecipe(this.id, { isShared: newVal })
+        this.recipe.isShared = newVal
+        this.$refs.toast.show({ message: newVal ? '已分享给好友' : '已取消分享', type: 'success' })
+      } catch (e) {
+        this.$refs.toast.show({ message: '操作失败', type: 'error' })
+      }
     },
     async handleCopy() {
       try {
@@ -493,6 +507,19 @@ export default {
   display: flex;
   gap: 16rpx;
 }
+.share-btn {
+  flex: 1;
+  height: 96rpx;
+  border-radius: 48rpx;
+  background: #FFFFFF;
+  border: 2rpx solid #1A1A1A;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:active { opacity: 0.7; }
+}
+.share-btn-text { font-size: 28rpx; color: #1A1A1A; font-weight: 600; }
 .copy-btn {
   flex: 1;
   height: 96rpx;
