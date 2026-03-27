@@ -74,7 +74,10 @@
             :key="recipe._id"
             @click="goDetail(recipe._id)"
           >
-            <image class="card-cover" :src="getCover(recipe.cover)" mode="aspectFill" lazy-load />
+            <image v-if="recipe.cover" class="card-cover" :src="getCover(recipe.cover)" mode="aspectFill" lazy-load />
+            <view v-else class="card-cover img-placeholder">
+              <text class="placeholder-emoji" style="font-size: 64rpx;">🍽</text>
+            </view>
             <view class="card-info">
               <text class="card-title">{{ recipe.title }}</text>
               <view class="card-meta">
@@ -108,7 +111,10 @@
             :key="recipe._id"
             @click="goDetail(recipe._id)"
           >
-            <image class="card-cover" :src="getCover(recipe.cover)" mode="aspectFill" lazy-load />
+            <image v-if="recipe.cover" class="card-cover" :src="getCover(recipe.cover)" mode="aspectFill" lazy-load />
+            <view v-else class="card-cover img-placeholder">
+              <text class="placeholder-emoji" style="font-size: 64rpx;">🍽</text>
+            </view>
             <view class="card-info">
               <text class="card-title">{{ recipe.title }}</text>
               <view class="card-meta">

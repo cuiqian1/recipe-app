@@ -119,6 +119,18 @@ page {
 .difficulty-2 { background: $difficulty-medium; }
 .difficulty-3 { background: $difficulty-hard; }
 
+// 图片占位
+.img-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f5efe8 0%, #ebe3d9 100%);
+
+  .placeholder-emoji {
+    opacity: 0.4;
+  }
+}
+
 // 骨架屏
 .skeleton {
   background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);

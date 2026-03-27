@@ -1,6 +1,9 @@
 <template>
   <view class="recipe-card card" @click="goDetail">
-    <image class="card-cover" :src="coverUrl" mode="aspectFill" lazy-load />
+    <image v-if="recipe.cover" class="card-cover" :src="coverUrl" mode="aspectFill" lazy-load />
+    <view v-else class="card-cover img-placeholder">
+      <text class="placeholder-emoji" style="font-size: 80rpx;">🍽</text>
+    </view>
     <view class="card-info">
       <text class="card-title">{{ recipe.title }}</text>
       <view class="card-meta">

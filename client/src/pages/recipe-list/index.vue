@@ -52,7 +52,10 @@
         :key="item._id"
         @click="goDetail(item._id)"
       >
-        <image class="card-image" :src="getCover(item.cover)" mode="aspectFill" lazy-load />
+        <image v-if="item.cover" class="card-image" :src="getCover(item.cover)" mode="aspectFill" lazy-load />
+        <view v-else class="card-image img-placeholder">
+          <text class="placeholder-emoji" style="font-size: 72rpx;">🍽</text>
+        </view>
         <view class="card-body">
           <view class="card-top">
             <view class="card-category" v-if="item.categoryId">

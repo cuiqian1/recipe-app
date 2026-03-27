@@ -45,7 +45,10 @@
             :key="item._id"
             @click="goDetail(item)"
           >
-            <image class="dish-thumb" :src="getImageUrl(item.coverImage)" mode="aspectFill" />
+            <image v-if="item.cover || item.coverImage" class="dish-thumb" :src="getImageUrl(item.cover || item.coverImage)" mode="aspectFill" />
+            <view v-else class="dish-thumb img-placeholder">
+              <text class="placeholder-emoji" style="font-size: 36rpx;">🍽</text>
+            </view>
             <view class="dish-info">
               <text class="dish-title" :class="{ strikethrough: item.done }">{{ item.title }}</text>
               <text class="dish-orderer" v-if="item.orderedBy">{{ item.orderedBy.nickname }} 点的</text>

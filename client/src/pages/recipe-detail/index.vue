@@ -21,7 +21,10 @@
 
     <!-- 大图封面 -->
     <view class="cover-wrap">
-      <image class="cover-image" :src="coverUrl" mode="aspectFill" />
+      <image v-if="recipe.cover" class="cover-image" :src="coverUrl" mode="aspectFill" />
+      <view v-else class="cover-image img-placeholder">
+        <text class="placeholder-emoji" style="font-size: 120rpx;">🍽</text>
+      </view>
       <view class="cover-category" v-if="recipe.categoryId">
         <text class="cover-category-text">{{ recipe.categoryId.name || '美食' }}</text>
       </view>

@@ -47,7 +47,10 @@
             :key="recipe._id"
             @click="goDetail(recipe._id)"
           >
-            <image class="recipe-thumb" :src="getImageUrl(recipe.coverImage)" mode="aspectFill" />
+            <image v-if="recipe.cover || recipe.coverImage" class="recipe-thumb" :src="getImageUrl(recipe.cover || recipe.coverImage)" mode="aspectFill" />
+            <view v-else class="recipe-thumb img-placeholder">
+              <text class="placeholder-emoji" style="font-size: 36rpx;">🍽</text>
+            </view>
             <view class="recipe-info">
               <text class="recipe-title">{{ recipe.title }}</text>
               <view class="recipe-meta">
