@@ -350,7 +350,7 @@ export default {
           this.form.title = res.title || ''
           this.form.description = res.description || ''
           this.form.cover = res.coverImage || res.cover || ''
-          this.form.categoryId = res.categoryId || ''
+          this.form.categoryId = res.categoryId?._id || res.categoryId || ''
           this.form.difficulty = res.difficulty || 1
           this.form.cookTime = res.cookTime || 30
           this.form.servings = res.servings || 2
